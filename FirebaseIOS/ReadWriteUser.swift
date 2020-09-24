@@ -25,4 +25,5 @@ class ReadWriteUser {
             return userDefault.string(forKey: key)!
         }
     }
+
 }

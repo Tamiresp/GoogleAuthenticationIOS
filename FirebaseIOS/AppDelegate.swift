@@ -14,6 +14,7 @@ import GoogleSignIn
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
+    var viewController = ViewController()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -49,6 +50,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         print("familyName: \(familyName ?? "familyName desconhecido")")
         print("email: \(email ?? "email desconhecido")")
         
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "notificationName"), object: nil)
+         
         DispatchQueue.main.async {
             guard let user = try? ReadWriteUser.writeData(key: "username", value: fullName) else {
                 return
